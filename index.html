@@ -6,6 +6,9 @@
         content="Visual Language Maps for Robot Navigation">
   <meta name="keywords" content="VLMaps">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Visual Language Maps for Robot Navigation" />
+  <meta property="og:url" content="https://vlmaps.github.io" />
+  <meta property="og:image" content="static/images/cover_lady.png" />
   <title>Visual Language Maps for Robot Navigation</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -216,10 +219,47 @@
         </div>
       </div>
     </div>
-    <!--/ Paper video. -->
   </div>
 </section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Approach</h2>
+        <div class="content has-text-justified has-text-centered">
+          <img src="static/images/pipeline.png"/>
+          <h3 class="title is-4">VLMap Creation</h3>
+          <p>
+            The key idea behind building a VLMap is to fuse pretrained
+            visual-language features into a geometrical reconstruction of the scene. This can be
+            done by computing dense pixel-level embeddings from an existing
+            visual-language model (over the RGB-D video feed of the robot) and 
+            back-projecting them onto the 3D surface of the environment (captured
+            from depth data used for reconstruction with visual odometry). Finally,
+            we generate the top-down scene representation by storing the visual-language
+            features of each image pixel in the corresponding grid map pixel location.
+          </p>
+          <h3 class="title is-4">Open-Vocabulary Landmark Indexing</h3>
+          <p>
+            We encode the open-vocabulary landmark names ("chair", "green plant", "table" etc.) 
+            with the text encoder in the Visual Language Model. Then we align the landmark names
+            with the pixels in the VLMap by computing the cosine similarity between their embeddings.
+            We get the mask of each landmark type with the argmax operation on the similarity score.
+          </p>
+          <h3 class="title is-4">Navigation Policies Generation</h3>
+          <img src="static/images/codegen_notitle.png"/>
+          <p>
+            We generate the navigation policies in the form of executable code with the help of Large Language Models. 
+            By providing a few examples in the prompt, we exploit GPT-3 to parse language 
+            instructions into a string of executable code, expressing functions 
+            or logic structures (if/else statements, for/while loops) and parameterizing API calls 
+            (e.g., robot.move_to(target_name) or robot.turn(degrees).
+          </p>
+
+        </div>
+      </div>
+    </div>
 
 <section class="section">
   <div class="container is-max-desktop">
