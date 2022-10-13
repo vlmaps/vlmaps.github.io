@@ -256,7 +256,7 @@
             By providing a few examples in the prompt, we exploit GPT-3 to parse language 
             instructions into a string of executable code, expressing functions 
             or logic structures (if/else statements, for/while loops) and parameterizing API calls 
-            (e.g., robot.move_to(target_name) or robot.turn(degrees).
+            (e.g., robot.move_to(target_name) or robot.turn(degrees)).
           </p>
 
         </div>
@@ -326,7 +326,11 @@
         <h3 class="title is-4">Multi-Embodiment Navigation</h3>
         <div class="content has-text-justified">
           <p>
-            VLMaps enables generation of obstacle maps for different embodiments on-the-fly
+            A VLMap can be shared among different robots and enables generation of obstacle maps for different 
+            embodiments on-the-fly to improve navigation efficiency. For example, a LoCoBot (ground robot) has 
+            to avoid sofa, tables, chairs and so on during planning while a drone can ignore them. Experiments
+            below show how a single VLMap representation in each scene can adapt to different embodiments
+            (by generating customized obstacle maps) and improve navigation efficiency.
           </p>
         </div>
 
